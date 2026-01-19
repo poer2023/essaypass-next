@@ -39,3 +39,4 @@ export interface AutoFillResponse {
 export type LoadingState = 'idle' | 'autofilling' | 'generating';
 
 export type Lang = 'en' | 'zh';
+export type ViewMode = 'web' | 'mobile';

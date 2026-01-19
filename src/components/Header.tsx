@@ -1,15 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { Lang } from '@/lib/types';
+import { Lang, ViewMode } from '@/lib/types';
 import { UI_TEXT } from '@/lib/constants';
 
 interface HeaderProps {
   lang: Lang;
   onLangChange: (lang: Lang) => void;
+  viewMode?: ViewMode;
+  onViewModeChange?: (mode: ViewMode) => void;
 }
 
-export default function Header({ lang, onLangChange }: HeaderProps) {
+export default function Header({ lang, onLangChange, viewMode = 'web', onViewModeChange }: HeaderProps) {
   const [showLangMenu, setShowLangMenu] = useState(false);
   const t = UI_TEXT[lang];
 
@@ -48,6 +50,38 @@ export default function Header({ lang, onLangChange }: HeaderProps) {
 
         {/* Right Section */}
         <div className="flex items-center gap-3">
+          {/* View Mode Switcher */}
+          {onViewModeChange && (
+            <div className="flex items-center bg-slate-100 rounded-lg p-0.5">
+              <button
+                onClick={() => onViewModeChange('web')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
+                  viewMode === 'web'
+                    ? 'bg-white text-blue-600 shadow-sm'
+                    : 'text-slate-500 hover:text-slate-700'
+                }`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+                <span className="hidden sm:inline">Web</span>
+              </button>
+              <button
+                onClick={() => onViewModeChange('mobile')}
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
+                  viewMode === 'mobile'
+                    ? 'bg-white text-blue-600 shadow-sm'
+                    : 'text-slate-500 hover:text-slate-700'
+                }`}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                <span className="hidden sm:inline">Mobile</span>
+              </button>
+            </div>
+          )}
+
           {/* Language Switcher */}
           <div className="relative">
             <button

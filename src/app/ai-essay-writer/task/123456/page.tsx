@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Header from "@/components/Header";
 import OrderConfirmation from "@/components/OrderConfirmation";
-import { Lang, EssayFormData } from "@/lib/types";
+import MobileFrame from "@/components/MobileFrame";
+import { Lang, EssayFormData, ViewMode } from "@/lib/types";
 
 // Demo 默认数据
 const DEFAULT_FORM_DATA: EssayFormData = {
@@ -24,6 +25,7 @@ const DEFAULT_FORM_DATA: EssayFormData = {
 export default function TaskPage() {
   const [lang, setLang] = useState<Lang>('en');
   const [formData, setFormData] = useState<EssayFormData>(DEFAULT_FORM_DATA);
+  const [viewMode, setViewMode] = useState<ViewMode>('web');
   const router = useRouter();
 
   useEffect(() => {
@@ -47,18 +49,36 @@ export default function TaskPage() {
     alert(lang === 'zh' ? '支付功能即将上线！' : 'Payment integration coming soon!');
   };
 
+  // 页面内容组件
+  const PageContent = () => (
+    <div className="bg-gradient-to-b from-slate-50/50 to-slate-100/50 min-h-[calc(100vh-64px)] py-8 px-4">
+      <OrderConfirmation
+        formData={formData}
+        onBack={handleBack}
+        onPay={handlePay}
+        lang={lang}
+      />
+    </div>
+  );
+
   return (
     <>
-      <Header lang={lang} onLangChange={setLang} />
+      <Header
+        lang={lang}
+        onLangChange={setLang}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+      />
       <main>
-        <div className="bg-gradient-to-b from-slate-50/50 to-slate-100/50 min-h-[calc(100vh-64px)] py-8 px-4">
-          <OrderConfirmation
-            formData={formData}
-            onBack={handleBack}
-            onPay={handlePay}
-            lang={lang}
-          />
-        </div>
+        {viewMode === 'web' ? (
+          <PageContent />
+        ) : (
+          <div className="bg-slate-100 min-h-[calc(100vh-64px)] flex items-center justify-center py-8">
+            <MobileFrame>
+              <PageContent />
+            </MobileFrame>
+          </div>
+        )}
       </main>
     </>
   );
