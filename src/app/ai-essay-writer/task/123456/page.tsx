@@ -61,7 +61,14 @@ export default function TaskPage() {
   );
 
   if (isEmbeddedMobile) {
-    return <PageContent />;
+    return (
+      <>
+        <Header lang={lang} onLangChange={setLang} />
+        <main>
+          <PageContent />
+        </main>
+      </>
+    );
   }
 
   return (

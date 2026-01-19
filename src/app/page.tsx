@@ -66,9 +66,16 @@ export default function Home() {
     </>
   );
 
-  // 如果是嵌入的移动端视图，只渲染内容（无 Header）
+  // 如果是嵌入的移动端视图，渲染完整页面（包含简化的 Header）
   if (isEmbeddedMobile) {
-    return <PageContent />;
+    return (
+      <>
+        <Header lang={lang} onLangChange={setLang} />
+        <main>
+          <PageContent />
+        </main>
+      </>
+    );
   }
 
   return (

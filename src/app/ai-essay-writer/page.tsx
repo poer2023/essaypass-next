@@ -34,7 +34,14 @@ export default function AIEssayWriterPage() {
   );
 
   if (isEmbeddedMobile) {
-    return <PageContent />;
+    return (
+      <>
+        <Header lang={lang} onLangChange={setLang} />
+        <main>
+          <PageContent />
+        </main>
+      </>
+    );
   }
 
   return (
