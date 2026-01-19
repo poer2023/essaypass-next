@@ -1,13 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams, usePathname } from 'next/navigation';
 import Header from "@/components/Header";
 import OrderConfirmation from "@/components/OrderConfirmation";
 import MobileFrame from "@/components/MobileFrame";
 import { Lang, EssayFormData, ViewMode } from "@/lib/types";
 
-// Demo 默认数据
 const DEFAULT_FORM_DATA: EssayFormData = {
   type: 'Research Paper',
   academicLevel: 'Undergraduate',
@@ -27,9 +26,11 @@ export default function TaskPage() {
   const [formData, setFormData] = useState<EssayFormData>(DEFAULT_FORM_DATA);
   const [viewMode, setViewMode] = useState<ViewMode>('web');
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const isEmbeddedMobile = searchParams.get('viewport') === 'mobile';
 
   useEffect(() => {
-    // 尝试从 sessionStorage 读取表单数据
     const savedData = sessionStorage.getItem('essayFormData');
     if (savedData) {
       try {
@@ -45,11 +46,9 @@ export default function TaskPage() {
   };
 
   const handlePay = () => {
-    // TODO: Integrate payment
     alert(lang === 'zh' ? '支付功能即将上线！' : 'Payment integration coming soon!');
   };
 
-  // 页面内容组件
   const PageContent = () => (
     <div className="bg-gradient-to-b from-slate-50/50 to-slate-100/50 min-h-[calc(100vh-64px)] py-8 px-4">
       <OrderConfirmation
@@ -60,6 +59,10 @@ export default function TaskPage() {
       />
     </div>
   );
+
+  if (isEmbeddedMobile) {
+    return <PageContent />;
+  }
 
   return (
     <>
@@ -74,9 +77,7 @@ export default function TaskPage() {
           <PageContent />
         ) : (
           <div className="bg-slate-100 min-h-[calc(100vh-64px)] flex items-center justify-center py-8">
-            <MobileFrame>
-              <PageContent />
-            </MobileFrame>
+            <MobileFrame currentPath={pathname} />
           </div>
         )}
       </main>

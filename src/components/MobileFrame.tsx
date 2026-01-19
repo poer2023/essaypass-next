@@ -3,12 +3,17 @@
 import React from 'react';
 
 interface MobileFrameProps {
-  children: React.ReactNode;
+  currentPath: string;
 }
 
-export default function MobileFrame({ children }: MobileFrameProps) {
+export default function MobileFrame({ currentPath }: MobileFrameProps) {
+  // 添加 ?mobile=true 参数来触发移动端样式
+  const mobileUrl = currentPath.includes('?')
+    ? `${currentPath}&viewport=mobile`
+    : `${currentPath}?viewport=mobile`;
+
   return (
-    <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center p-4 z-40">
+    <div className="flex items-center justify-center p-4">
       {/* iPhone-style frame */}
       <div className="relative">
         {/* Phone outer frame */}
@@ -29,21 +34,12 @@ export default function MobileFrame({ children }: MobileFrameProps) {
               </div>
             </div>
 
-            {/* Screen content */}
-            <div
-              className="w-[375px] h-[812px] bg-white overflow-y-auto overflow-x-hidden"
-              style={{
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none'
-              }}
-            >
-              <style jsx>{`
-                div::-webkit-scrollbar {
-                  display: none;
-                }
-              `}</style>
-              {children}
-            </div>
+            {/* Screen content - iframe with mobile viewport parameter */}
+            <iframe
+              src={mobileUrl}
+              className="w-[375px] h-[812px] bg-white border-0"
+              title="Mobile Preview"
+            />
 
             {/* Home indicator */}
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-32 h-1 bg-white/80 rounded-full"></div>

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { useSearchParams, usePathname } from 'next/navigation';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import EssayForm from "@/components/EssayForm";
@@ -15,6 +16,10 @@ export default function Home() {
   const [view, setView] = useState<ViewState>('form');
   const [formData, setFormData] = useState<EssayFormData | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('web');
+
+  const searchParams = useSearchParams();
+  const pathname = usePathname();
+  const isEmbeddedMobile = searchParams.get('viewport') === 'mobile';
 
   const handleFormSubmit = (data: EssayFormData) => {
     setFormData(data);
@@ -61,6 +66,11 @@ export default function Home() {
     </>
   );
 
+  // 如果是嵌入的移动端视图，只渲染内容（无 Header）
+  if (isEmbeddedMobile) {
+    return <PageContent />;
+  }
+
   return (
     <>
       <Header
@@ -74,9 +84,7 @@ export default function Home() {
           <PageContent />
         ) : (
           <div className="bg-slate-100 min-h-[calc(100vh-64px)] flex items-center justify-center py-8">
-            <MobileFrame>
-              <PageContent />
-            </MobileFrame>
+            <MobileFrame currentPath={pathname} />
           </div>
         )}
       </main>
