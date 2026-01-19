@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Lang, ViewMode } from '@/lib/types';
 import { UI_TEXT } from '@/lib/constants';
 
@@ -14,6 +16,7 @@ interface HeaderProps {
 export default function Header({ lang, onLangChange, viewMode = 'web', onViewModeChange }: HeaderProps) {
   const [showLangMenu, setShowLangMenu] = useState(false);
   const t = UI_TEXT[lang];
+  const pathname = usePathname();
 
   const languages = [
     { code: 'en' as Lang, label: 'English', flag: '🇺🇸' },
@@ -22,30 +25,41 @@ export default function Header({ lang, onLangChange, viewMode = 'web', onViewMod
 
   const currentLang = languages.find(l => l.code === lang) || languages[0];
 
+  const navItems = [
+    { href: '/ai-essay-writer', label: lang === 'zh' ? 'AI论文写作' : 'AI Essay Writer' },
+    { href: '/ai-detector', label: lang === 'zh' ? 'AI检测' : 'AI Detector' },
+    { href: '/blog', label: lang === 'zh' ? '博客' : 'Blog' },
+    { href: '/history', label: lang === 'zh' ? '历史记录' : 'History' },
+  ];
+
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
         {/* Logo */}
-        <div className="flex items-center gap-2.5">
-          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <Link href="/" className="flex items-center gap-2.5">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="16" cy="16" r="14" fill="#2563EB" />
             <path d="M10 16C10 12.6863 12.6863 10 16 10C19.3137 10 22 12.6863 22 16" stroke="white" strokeWidth="2.5" strokeLinecap="round" />
             <circle cx="16" cy="20" r="2" fill="white" />
           </svg>
-          <span className="text-lg font-bold text-blue-600 tracking-tight">EssayPass</span>
-        </div>
+          <span className="text-xl font-bold text-blue-600 tracking-tight">EssayPass</span>
+        </Link>
 
-        {/* Navigation Links */}
-        <div className="hidden md:flex items-center gap-1">
-          <a href="#" className="px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md transition-colors">
-            {t.nav.essayWriter}
-          </a>
-          <a href="#" className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
-            {t.nav.detector}
-          </a>
-          <a href="#" className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-blue-600 hover:bg-slate-50 rounded-md transition-colors">
-            {t.nav.blog}
-          </a>
+        {/* Navigation Links - Centered */}
+        <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`text-sm font-medium transition-colors ${
+                pathname?.startsWith(item.href)
+                  ? 'text-blue-600'
+                  : 'text-slate-600 hover:text-blue-600'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
 
         {/* Right Section */}

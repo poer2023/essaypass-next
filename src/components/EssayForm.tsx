@@ -8,9 +8,10 @@ import { OPTIONS, UI_TEXT } from '@/lib/constants';
 interface EssayFormProps {
     lang: Lang;
     onSubmit: (formData: EssayFormData) => void;
+    initialTopic?: string;
 }
 
-export default function EssayForm({ lang, onSubmit }: EssayFormProps) {
+export default function EssayForm({ lang, onSubmit, initialTopic = '' }: EssayFormProps) {
     const options = OPTIONS[lang];
     const t = UI_TEXT[lang];
     const ctaText = lang === 'zh' ? '准备开始？' : 'Ready to begin ?';
@@ -177,17 +178,17 @@ export default function EssayForm({ lang, onSubmit }: EssayFormProps) {
                                 {/* Glow effect - 初始自动发光或聚焦时发光 */}
                                 <div className={`absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 rounded-2xl blur-md transition-all duration-500 ${isAutoFocused || isAnalyzing ? 'opacity-50 animate-gradient-x' : 'opacity-0 group-focus-within:opacity-50 group-focus-within:animate-gradient-x'}`}></div>
                                 <div className="relative bg-white rounded-xl shadow-sm border border-slate-200 overflow-visible transition-colors">
-                                    <div className="flex items-end">
+                                    <div className="flex flex-col sm:flex-row sm:items-end">
                                         <textarea
                                             ref={textareaRef}
                                             rows={2}
-                                            className="flex-1 p-3 pl-4 min-h-[56px] max-h-40 resize-none outline-none text-slate-700 placeholder:text-slate-400 text-sm leading-relaxed bg-transparent overflow-y-auto rounded-l-xl"
+                                            className="flex-1 p-3 pl-4 min-h-[56px] max-h-40 resize-none outline-none text-slate-700 placeholder:text-slate-400 text-sm leading-relaxed bg-transparent overflow-y-auto rounded-xl sm:rounded-l-xl sm:rounded-r-none"
                                             placeholder={t.autoFill.placeholder}
                                             value={autoFillPrompt}
                                             onChange={handleAutoFillInput}
                                             disabled={isAnalyzing}
                                         />
-                                        <div className="flex items-center gap-2 pr-3 pb-2.5">
+                                        <div className="flex items-center justify-end gap-2 px-3 pb-3 sm:pb-2.5 sm:pr-3 sm:pl-0">
                                             {/* Upload Button */}
                                             <div className="relative group/upload">
                                                 <button

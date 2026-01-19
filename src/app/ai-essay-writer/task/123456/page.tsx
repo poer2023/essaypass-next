@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter, useSearchParams, usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Header from "@/components/Header";
 import OrderConfirmation from "@/components/OrderConfirmation";
 import MobileFrame from "@/components/MobileFrame";
@@ -26,9 +26,6 @@ export default function TaskPage() {
   const [formData, setFormData] = useState<EssayFormData>(DEFAULT_FORM_DATA);
   const [viewMode, setViewMode] = useState<ViewMode>('web');
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const pathname = usePathname();
-  const isEmbeddedMobile = searchParams.get('viewport') === 'mobile';
 
   useEffect(() => {
     const savedData = sessionStorage.getItem('essayFormData');
@@ -60,17 +57,6 @@ export default function TaskPage() {
     </div>
   );
 
-  if (isEmbeddedMobile) {
-    return (
-      <>
-        <Header lang={lang} onLangChange={setLang} />
-        <main>
-          <PageContent />
-        </main>
-      </>
-    );
-  }
-
   return (
     <>
       <Header
@@ -84,7 +70,10 @@ export default function TaskPage() {
           <PageContent />
         ) : (
           <div className="bg-slate-100 min-h-[calc(100vh-64px)] flex items-center justify-center py-8">
-            <MobileFrame currentPath={pathname} />
+            <MobileFrame>
+              <Header lang={lang} onLangChange={setLang} />
+              <PageContent />
+            </MobileFrame>
           </div>
         )}
       </main>

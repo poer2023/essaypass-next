@@ -206,3 +206,303 @@ body {
 .animate-tap-ripple {
   animation: tap-ripple 0.8s ease-in-out infinite;
 }
+
+/* ========== Force Mobile Mode ========== */
+/* 当添加 .force-mobile 时，强制所有响应式样式使用移动端版本 */
+
+/* 隐藏 sm:inline, sm:flex, sm:block 等 */
+.force-mobile .sm\:inline,
+.force-mobile .sm\:flex,
+.force-mobile .sm\:block,
+.force-mobile .md\:flex,
+.force-mobile .lg\:flex {
+  display: none !important;
+}
+
+/* 显示 sm:hidden 的元素 */
+.force-mobile .sm\:hidden {
+  display: flex !important;
+}
+
+/* 隐藏桌面端元素 */
+.force-mobile .hidden.sm\:flex,
+.force-mobile .hidden.sm\:block,
+.force-mobile .hidden.md\:flex,
+.force-mobile .hidden.lg\:flex {
+  display: none !important;
+}
+
+/* 显示移动端元素 */
+.force-mobile .lg\:hidden {
+  display: flex !important;
+}
+
+/* 隐藏仅桌面显示的侧边栏 */
+.force-mobile .hidden.lg\:flex {
+  display: none !important;
+}
+
+/* Grid 布局强制单列 */
+.force-mobile .sm\:grid-cols-2,
+.force-mobile .sm\:grid-cols-3 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+/* Flex 方向强制列 */
+.force-mobile .sm\:flex-row {
+  flex-direction: column !important;
+}
+
+.force-mobile .sm\:items-end {
+  align-items: stretch !important;
+}
+
+/* 文字大小使用移动端尺寸 */
+.force-mobile .sm\:text-5xl,
+.force-mobile .md\:text-6xl {
+  font-size: 2.25rem !important;
+  line-height: 2.5rem !important;
+}
+
+.force-mobile .sm\:text-2xl {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+}
+
+.force-mobile .sm\:text-3xl {
+  font-size: 1.5rem !important;
+}
+
+.force-mobile .sm\:text-xs {
+  font-size: 11px !important;
+}
+
+/* Padding 使用移动端尺寸 */
+.force-mobile .sm\:p-8 {
+  padding: 1.5rem !important;
+}
+
+.force-mobile .sm\:px-6,
+.force-mobile .lg\:px-8 {
+  padding-left: 1rem !important;
+  padding-right: 1rem !important;
+}
+
+.force-mobile .sm\:px-8 {
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+}
+
+.force-mobile .sm\:py-6 {
+  padding-top: 1.25rem !important;
+  padding-bottom: 1.25rem !important;
+}
+
+.force-mobile .sm\:p-3 {
+  padding: 0.5rem !important;
+}
+
+.force-mobile .sm\:p-5 {
+  padding: 1rem !important;
+}
+
+.force-mobile .sm\:pl-8 {
+  padding-left: 1.5rem !important;
+}
+
+/* Gap 使用移动端尺寸 */
+.force-mobile .sm\:gap-2 {
+  gap: 0.375rem !important;
+}
+
+.force-mobile .sm\:gap-1\.5 {
+  gap: 0.25rem !important;
+}
+
+.force-mobile .lg\:gap-3 {
+  gap: 1rem !important;
+}
+
+/* 宽度使用移动端尺寸 */
+.force-mobile .sm\:w-auto {
+  width: 100% !important;
+}
+
+.force-mobile .sm\:w-\[480px\] {
+  width: 340px !important;
+}
+
+.force-mobile .sm\:w-\[500px\] {
+  width: 75vw !important;
+}
+
+.force-mobile .lg\:w-\[300px\] {
+  width: 100% !important;
+}
+
+/* 高度使用移动端尺寸 */
+.force-mobile .sm\:h-\[260px\] {
+  height: 220px !important;
+}
+
+.force-mobile .sm\:h-\[300px\] {
+  height: 260px !important;
+}
+
+.force-mobile .lg\:h-\[180px\] {
+  height: auto !important;
+}
+
+/* Margin 使用移动端尺寸 */
+.force-mobile .sm\:mb-4 {
+  margin-bottom: 0.75rem !important;
+}
+
+.force-mobile .sm\:mx-\[-40px\] {
+  margin-left: -20px !important;
+  margin-right: -20px !important;
+}
+
+/* 底部 padding */
+.force-mobile .sm\:pb-10 {
+  padding-bottom: 13rem !important;
+}
+
+/* 圆角 */
+.force-mobile .sm\:rounded-l-xl {
+  border-radius: 0.75rem !important;
+}
+
+.force-mobile .sm\:rounded-r-none {
+  border-top-right-radius: 0.75rem !important;
+  border-bottom-right-radius: 0.75rem !important;
+}
+
+/* 特殊布局调整 */
+.force-mobile .lg\:flex-row {
+  flex-direction: column !important;
+}
+
+.force-mobile .lg\:flex-\[2\],
+.force-mobile .lg\:flex-\[3\],
+.force-mobile .lg\:flex-\[1\] {
+  flex: 1 1 auto !important;
+}
+
+/* 移动端底部支付栏显示 */
+.force-mobile .sm\:hidden {
+  display: block !important;
+}
+
+/* 桌面端支付区域隐藏 */
+.force-mobile .hidden.sm\:flex {
+  display: none !important;
+}
+
+/* 移动端底部固定支付栏 - 在 force-mobile 内改为 sticky 定位，完全贴边 */
+.force-mobile .fixed.bottom-0 {
+  position: sticky !important;
+  bottom: 0 !important;
+  margin-top: auto !important;
+  /* 使用绝对定位方式确保完全贴边 */
+  margin-left: -16px !important;
+  margin-right: -16px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  width: calc(100% + 32px) !important;
+  box-sizing: border-box !important;
+}
+
+/* 确保 force-mobile 容器有相对定位和flex布局 */
+.force-mobile {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* 修复 lg:flex 在移动端不应该生效 */
+.force-mobile .lg\:flex {
+  display: grid !important;
+}
+
+.force-mobile .lg\:justify-around {
+  justify-content: stretch !important;
+}
+
+/* 确保 grid 内容正常显示 */
+.force-mobile .grid.grid-cols-2 {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.force-mobile .grid.grid-cols-3 {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+/* ========== Force Mobile Card Size Overrides ========== */
+/* 移动端卡片尺寸调整 - 100px在375px宽度下太大，需要缩小 */
+.force-mobile .w-\[100px\] {
+  width: 80px !important;
+}
+
+.force-mobile .h-\[100px\] {
+  height: 80px !important;
+}
+
+/* 移动端容器高度自适应 */
+.force-mobile .lg\:h-\[180px\] {
+  height: auto !important;
+  min-height: 120px !important;
+}
+
+/* 移动端gap调整 */
+.force-mobile .gap-4 {
+  gap: 0.75rem !important;
+}
+
+.force-mobile .gap-3 {
+  gap: 0.5rem !important;
+}
+
+/* 移动端padding调整 */
+.force-mobile .p-4 {
+  padding: 0.75rem !important;
+}
+
+.force-mobile .p-5 {
+  padding: 1rem !important;
+}
+
+/* 移动端文字大小 */
+.force-mobile .text-2xl {
+  font-size: 1.25rem !important;
+  line-height: 1.75rem !important;
+}
+
+.force-mobile .text-lg {
+  font-size: 1rem !important;
+  line-height: 1.5rem !important;
+}
+
+/* 移动端标签间距 */
+.force-mobile .mt-2.h-10 {
+  height: 2rem !important;
+  margin-top: 0.375rem !important;
+}
+
+/* 确保flex容器在移动端正确堆叠 */
+.force-mobile .lg\:flex-\[2\] {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+}
+
+.force-mobile .lg\:flex-\[3\] {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+}
+
+.force-mobile .lg\:flex-\[1\] {
+  flex: 1 1 auto !important;
+  width: 100% !important;
+}
