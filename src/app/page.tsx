@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Header from "@/components/Header";
 import MobileFrame from "@/components/MobileFrame";
 import { Lang, ViewMode } from "@/lib/types";
+import { UI_TEXT } from "@/lib/constants";
 
 export default function HomePage() {
   const [lang, setLang] = useState<Lang>('en');
@@ -13,45 +14,14 @@ export default function HomePage() {
   const [topic, setTopic] = useState('');
   const router = useRouter();
 
+  const t = UI_TEXT[lang].landing;
+
   const handleStartDrafting = () => {
     if (topic.trim()) {
       sessionStorage.setItem('essayFormData', JSON.stringify({ topic: topic.trim() }));
     }
     router.push('/ai-essay-writer');
   };
-
-  const t = {
-    en: {
-      heroTitle: 'AI Essay Writer For Academic Writing Platform',
-      heroDesc: 'Generate structured outlines, brainstorm ideas, and refine your arguments. Designed to help students learn and write more efficiently.',
-      placeholder: 'Enter your topic or outline',
-      startBtn: 'Start Drafting',
-      feature1Title: 'Writing Platform',
-      feature1Desc: "Overcome Writer's Block, brainstorm ideas",
-      feature2Title: 'Verifiable Sources',
-      feature2Desc: 'APA/MLA/Chicago, Downloadable resources',
-      feature3Title: 'Privacy & Compliance',
-      feature3Desc: 'Encrypted transit, minimal retention',
-      section2Title: 'Elevate Your Academic Writing with Your AI Research Companion',
-      section2Desc: "EssayPass empowers you to turn scattered ideas into well-structured drafts — overcoming writer's block efficiently and logically.",
-    },
-    zh: {
-      heroTitle: 'AI论文写作学术写作平台',
-      heroDesc: '生成结构化大纲，头脑风暴创意，完善论点。专为帮助学生更高效地学习和写作而设计。',
-      placeholder: '输入您的主题或大纲',
-      startBtn: '开始写作',
-      feature1Title: '写作平台',
-      feature1Desc: '克服写作障碍，激发创意灵感',
-      feature2Title: '可验证来源',
-      feature2Desc: 'APA/MLA/Chicago格式，可下载资源',
-      feature3Title: '隐私合规',
-      feature3Desc: '加密传输，最小化数据保留',
-      section2Title: '用AI研究助手提升您的学术写作',
-      section2Desc: 'EssayPass帮助您将零散的想法转化为结构良好的草稿——高效且有逻辑地克服写作障碍。',
-    }
-  };
-
-  const text = t[lang];
 
   const PageContent = () => (
     <div className="bg-gradient-to-b from-blue-50/30 via-white to-slate-50 min-h-[calc(100vh-64px)]">
@@ -68,10 +38,10 @@ export default function HomePage() {
             {/* Left: Text Content */}
             <div className="max-w-xl">
               <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 leading-tight mb-6">
-                {text.heroTitle}
+                {t.heroTitle}
               </h1>
               <p className="text-lg text-slate-600 leading-relaxed mb-8">
-                {text.heroDesc}
+                {t.heroDesc}
               </p>
 
               {/* Search/Input Box */}
@@ -80,7 +50,7 @@ export default function HomePage() {
                   type="text"
                   value={topic}
                   onChange={(e) => setTopic(e.target.value)}
-                  placeholder={text.placeholder}
+                  placeholder={t.placeholder}
                   className="flex-1 px-4 py-3 text-slate-700 placeholder-slate-400 bg-transparent outline-none text-sm"
                   onKeyDown={(e) => e.key === 'Enter' && handleStartDrafting()}
                 />
@@ -91,7 +61,7 @@ export default function HomePage() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
                   </svg>
-                  {text.startBtn}
+                  {t.startBtn}
                 </button>
               </div>
             </div>
@@ -152,9 +122,9 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-blue-600">{text.feature1Title}</h3>
+              <h3 className="text-base font-bold text-blue-600">{t.feature1Title}</h3>
             </div>
-            <p className="text-sm text-slate-500">{text.feature1Desc}</p>
+            <p className="text-sm text-slate-500">{t.feature1Desc}</p>
           </div>
 
           {/* Feature 2 */}
@@ -165,9 +135,9 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-blue-600">{text.feature2Title}</h3>
+              <h3 className="text-base font-bold text-blue-600">{t.feature2Title}</h3>
             </div>
-            <p className="text-sm text-slate-500">{text.feature2Desc}</p>
+            <p className="text-sm text-slate-500">{t.feature2Desc}</p>
           </div>
 
           {/* Feature 3 */}
@@ -178,9 +148,9 @@ export default function HomePage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
-              <h3 className="text-base font-bold text-blue-600">{text.feature3Title}</h3>
+              <h3 className="text-base font-bold text-blue-600">{t.feature3Title}</h3>
             </div>
-            <p className="text-sm text-slate-500">{text.feature3Desc}</p>
+            <p className="text-sm text-slate-500">{t.feature3Desc}</p>
           </div>
         </div>
       </section>
@@ -189,10 +159,10 @@ export default function HomePage() {
       <section className="bg-gradient-to-b from-slate-50 to-blue-50/30 py-20 mt-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4 leading-tight">
-            {text.section2Title}
+            {t.section2Title}
           </h2>
           <p className="text-lg text-slate-500 max-w-2xl mx-auto">
-            {text.section2Desc}
+            {t.section2Desc}
           </p>
         </div>
       </section>

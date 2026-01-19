@@ -46,6 +46,22 @@ export const OPTIONS = {
 
 export const UI_TEXT = {
   en: {
+    // Landing Page (/)
+    landing: {
+      heroTitle: "AI Essay Writer For Academic Writing Platform",
+      heroDesc: "Generate structured outlines, brainstorm ideas, and refine your arguments. Designed to help students learn and write more efficiently.",
+      placeholder: "Enter your topic or outline",
+      startBtn: "Start Drafting",
+      feature1Title: "Writing Platform",
+      feature1Desc: "Overcome Writer's Block, brainstorm ideas",
+      feature2Title: "Verifiable Sources",
+      feature2Desc: "APA/MLA/Chicago, Downloadable resources",
+      feature3Title: "Privacy & Compliance",
+      feature3Desc: "Encrypted transit, minimal retention",
+      section2Title: "Elevate Your Academic Writing with Your AI Research Companion",
+      section2Desc: "EssayPass empowers you to turn scattered ideas into well-structured drafts — overcoming writer's block efficiently and logically."
+    },
+    // Hero Section (Form Page)
     hero: {
       title: "Submission-Ready Academic Results",
       subtitle: "What You Get After Generation"
@@ -60,11 +76,14 @@ export const UI_TEXT = {
         { id: 4, title: "Writing Strategy", tag: "Clear Structure & Logic" },
       ]
     },
+    // Navigation
     nav: {
       essayWriter: "AI Essay Writer",
       detector: "AI Detector",
-      blog: "Blog"
+      blog: "Blog",
+      history: "History"
     },
+    // Auto Fill Section
     autoFill: {
       title: "AI Smart Analysis",
       subtitle: "Paste or upload assignment requirements to auto-fill the form.",
@@ -85,6 +104,7 @@ export const UI_TEXT = {
       extractedLabel: "Current Instruction",
       statusLabel: "Status"
     },
+    // Form Fields
     form: {
       typeLabel: "Type",
       levelLabel: "Academic level",
@@ -114,9 +134,88 @@ export const UI_TEXT = {
       submitButton: "Get My Paper",
       submitLoading: "Writing...",
       resultTitle: "Generated Result"
+    },
+    // Order Confirmation Page
+    order: {
+      configTitle: "Essay Configuration",
+      untitled: "Untitled Essay",
+      edit: "Edit details",
+      samplePreviews: "Sample Previews",
+      sampleDesc: "See example outputs. Your final files follow your topic & requirements.",
+      previewSamples: "Preview samples",
+      allInOne: "All-in-one Service",
+      corePaper: "1. Core paper",
+      reviewUnderstanding: "2. Review & understanding",
+      revision: "3. Revision",
+      submissionReadyPaper: "Submission-ready paper",
+      referenceSources: "Reference sources",
+      onePageSummary: "1-page summary",
+      topicQA: "Topic Q&A",
+      writingStructure: "Writing Structure",
+      aiRevisionAgent: "AI revision agent",
+      addOnServices: "Add-on Services",
+      turnitinTitle: "Turnitin Similarity & AI Report",
+      turnitinDesc: "Official PDF report (similarity + AI) delivered with paper.",
+      similarityAIReport: "Similarity & AI Report",
+      presentationSlides: "Presentation Slides",
+      comingSoon: "Soon",
+      recommended: "Recommended",
+      addonLabel: "Add-on (Turnitin Official Report)",
+      total: "Total",
+      payButton: "Pay",
+      securePayment: "SSL Secure Payment",
+      closePreview: "Close Preview",
+      samplePreview: "Sample Preview",
+      highFidelity: "High-Fidelity Sample",
+      samplePlaceholder: "This is a placeholder for the sample. In production, this would display a high-resolution PDF or interactive document viewer to show the quality of output.",
+      faq1Title: "Q: Will my EssayPass paper get flagged?",
+      faq1Answer: "A: Our engine writes line-by-line using academic logic, unlike standard LLMs. Plus, you can add the official Turnitin report for proof.",
+      faq2Title: "Q: Is the draft actually usable?",
+      faq2Answer: "A: Yes. You get real citations (matched to text), a clear outline, and a verified reference list. It is a submission-ready artifact.",
+      trustedBy: "Trusted by",
+      students: "5M+ students",
+      gallery: {
+        paper: { label: "Paper sample", title: "Submission-ready paper" },
+        summary: { label: "Summary sample", title: "1-Page Summary" },
+        faq: { label: "FAQ sample", title: "Topic FAQ" },
+        strategy: { label: "Logic sample", title: "Writing Strategy" },
+        refs: { label: "Sources sample", title: "Reference Full Text" }
+      },
+      billing: {
+        paper: { text: "Submission-ready paper", format: "DOCX/PDF" },
+        summary: { text: "1-Page Summary", format: "PDF" },
+        faq: { text: "Topic FAQ", format: "PDF" },
+        strategy: { text: "Writing Strategy", format: "PDF" },
+        refs: { text: "Reference Full Text", format: "ZIP/PDF" },
+        agent: { text: "AI Agent Context", format: "Chat Log" }
+      },
+      previewTitles: {
+        paper: "Final Paper Sample",
+        summary: "Executive Summary Sample",
+        faq: "Topic FAQ & Analysis Sample",
+        strategy: "Logic & Strategy Map Sample",
+        refs: "Verified References Sample",
+        all: "Sample Deliverables Overview"
+      }
     }
   },
   zh: {
+    // Landing Page (/)
+    landing: {
+      heroTitle: "AI论文写作学术写作平台",
+      heroDesc: "生成结构化大纲，头脑风暴创意，完善论点。专为帮助学生更高效地学习和写作而设计。",
+      placeholder: "输入您的主题或大纲",
+      startBtn: "开始写作",
+      feature1Title: "写作平台",
+      feature1Desc: "克服写作障碍，激发创意灵感",
+      feature2Title: "可验证来源",
+      feature2Desc: "APA/MLA/Chicago格式，可下载资源",
+      feature3Title: "隐私合规",
+      feature3Desc: "加密传输，最小化数据保留",
+      section2Title: "用AI研究助手提升您的学术写作",
+      section2Desc: "EssayPass帮助您将零散的想法转化为结构良好的草稿——高效且有逻辑地克服写作障碍。"
+    },
+    // Hero Section (Form Page)
     hero: {
       title: "可直接提交的学术成果",
       subtitle: "生成即成品，绝非仅供参考"
@@ -131,11 +230,14 @@ export const UI_TEXT = {
         { id: 4, title: "写作策略说明", tag: "结构逻辑清晰" },
       ]
     },
+    // Navigation
     nav: {
       essayWriter: "AI 论文写作",
       detector: "AI 检测器",
-      blog: "博客"
+      blog: "博客",
+      history: "历史记录"
     },
+    // Auto Fill Section
     autoFill: {
       title: "AI 智能分析",
       subtitle: "粘贴或上传作业要求以自动填充表单。",
@@ -156,6 +258,7 @@ export const UI_TEXT = {
       extractedLabel: "当前说明",
       statusLabel: "状态"
     },
+    // Form Fields
     form: {
       typeLabel: "类型",
       levelLabel: "学术等级",
@@ -185,6 +288,69 @@ export const UI_TEXT = {
       submitButton: "生成我的论文",
       submitLoading: "正在写作...",
       resultTitle: "生成结果"
+    },
+    // Order Confirmation Page
+    order: {
+      configTitle: "论文配置",
+      untitled: "未命名论文",
+      edit: "编辑详情",
+      samplePreviews: "样例预览",
+      sampleDesc: "查看示例输出。最终文件将按照您的主题和要求生成。",
+      previewSamples: "预览样例",
+      allInOne: "一站式服务",
+      corePaper: "1. 核心论文",
+      reviewUnderstanding: "2. 复习与理解",
+      revision: "3. 修订",
+      submissionReadyPaper: "可提交的论文",
+      referenceSources: "参考文献来源",
+      onePageSummary: "一页摘要",
+      topicQA: "主题问答",
+      writingStructure: "写作结构",
+      aiRevisionAgent: "AI修订助手",
+      addOnServices: "附加服务",
+      turnitinTitle: "Turnitin 查重 & AI 检测报告",
+      turnitinDesc: "官方 PDF 报告（查重率 + AI 检测）随论文交付。",
+      similarityAIReport: "查重 & AI 检测报告",
+      presentationSlides: "演示文稿",
+      comingSoon: "即将上线",
+      recommended: "推荐",
+      addonLabel: "附加服务 (Turnitin 官方报告)",
+      total: "总计",
+      payButton: "支付",
+      securePayment: "SSL 安全支付",
+      closePreview: "关闭预览",
+      samplePreview: "样例预览",
+      highFidelity: "高保真样例",
+      samplePlaceholder: "这是样例的占位符。在生产环境中，这将显示高分辨率 PDF 或交互式文档查看器以展示输出质量。",
+      faq1Title: "问：EssayPass 的论文会被检测出来吗？",
+      faq1Answer: "答：我们的引擎使用学术逻辑逐行写作，不同于标准 LLM。此外，您可以添加官方 Turnitin 报告作为证明。",
+      faq2Title: "问：生成的草稿真的能用吗？",
+      faq2Answer: "答：是的。您将获得真实的引用（与正文匹配）、清晰的大纲和经过验证的参考文献列表。这是可直接提交的成品。",
+      trustedBy: "已获信赖",
+      students: "500万+ 学生",
+      gallery: {
+        paper: { label: "论文样例", title: "可提交的论文" },
+        summary: { label: "摘要样例", title: "一页摘要" },
+        faq: { label: "FAQ样例", title: "主题常见问题" },
+        strategy: { label: "逻辑样例", title: "写作策略" },
+        refs: { label: "文献样例", title: "参考文献全文" }
+      },
+      billing: {
+        paper: { text: "可提交的论文", format: "DOCX/PDF" },
+        summary: { text: "一页摘要", format: "PDF" },
+        faq: { text: "主题常见问题", format: "PDF" },
+        strategy: { text: "写作策略", format: "PDF" },
+        refs: { text: "参考文献全文", format: "ZIP/PDF" },
+        agent: { text: "AI 代理上下文", format: "聊天记录" }
+      },
+      previewTitles: {
+        paper: "最终论文样例",
+        summary: "执行摘要样例",
+        faq: "主题 FAQ 与分析样例",
+        strategy: "逻辑与策略图样例",
+        refs: "已验证参考文献样例",
+        all: "交付物概览样例"
+      }
     }
   }
 };

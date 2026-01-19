@@ -11,108 +11,6 @@ interface OrderConfirmationProps {
   lang: Lang;
 }
 
-// UI Text for OrderConfirmation
-const ORDER_TEXT = {
-  en: {
-    configTitle: 'Essay Configuration',
-    untitled: 'Untitled Essay',
-    edit: 'Edit details',
-    samplePreviews: 'Sample Previews',
-    sampleDesc: 'See example outputs. Your final files follow your topic & requirements.',
-    previewSamples: 'Preview samples',
-    allInOne: 'All-in-one Service',
-    turnitinTitle: 'Turnitin Similarity & AI Report',
-    turnitinDesc: 'Official PDF report (similarity + AI) delivered with paper.',
-    recommended: 'Recommended',
-    addonLabel: 'Add-on (Turnitin Official Report)',
-    total: 'Total',
-    payButton: 'Pay',
-    securePayment: 'SSL Secure Payment',
-    closePreview: 'Close Preview',
-    samplePreview: 'Sample Preview',
-    highFidelity: 'High-Fidelity Sample',
-    samplePlaceholder: 'This is a placeholder for the sample. In production, this would display a high-resolution PDF or interactive document viewer to show the quality of output.',
-    faq1Title: 'Q: Will my EssayPass paper get flagged?',
-    faq1Answer: 'A: Our engine writes line-by-line using academic logic, unlike standard LLMs. Plus, you can add the official Turnitin report for proof.',
-    faq2Title: 'Q: Is the draft actually usable?',
-    faq2Answer: 'A: Yes. You get real citations (matched to text), a clear outline, and a verified reference list. It is a submission-ready artifact.',
-    trustedBy: 'Trusted by',
-    students: '5M+ students',
-    gallery: {
-      paper: { label: 'Paper sample', title: 'Submission-ready paper' },
-      summary: { label: 'Summary sample', title: '1-Page Summary' },
-      faq: { label: 'FAQ sample', title: 'Topic FAQ' },
-      strategy: { label: 'Logic sample', title: 'Writing Strategy' },
-      refs: { label: 'Sources sample', title: 'Reference Full Text' }
-    },
-    billing: {
-      paper: { text: 'Submission-ready paper', format: 'DOCX/PDF' },
-      summary: { text: '1-Page Summary', format: 'PDF' },
-      faq: { text: 'Topic FAQ', format: 'PDF' },
-      strategy: { text: 'Writing Strategy', format: 'PDF' },
-      refs: { text: 'Reference Full Text', format: 'ZIP/PDF' },
-      agent: { text: 'AI Agent Context', format: 'Chat Log' }
-    },
-    previewTitles: {
-      paper: 'Final Paper Sample',
-      summary: 'Executive Summary Sample',
-      faq: 'Topic FAQ & Analysis Sample',
-      strategy: 'Logic & Strategy Map Sample',
-      refs: 'Verified References Sample',
-      all: 'Sample Deliverables Overview'
-    }
-  },
-  zh: {
-    configTitle: '论文配置',
-    untitled: '未命名论文',
-    edit: '编辑详情',
-    samplePreviews: '样例预览',
-    sampleDesc: '查看示例输出。最终文件将按照您的主题和要求生成。',
-    previewSamples: '预览样例',
-    allInOne: '一站式服务',
-    turnitinTitle: 'Turnitin 查重 & AI 检测报告',
-    turnitinDesc: '官方 PDF 报告（查重率 + AI 检测）随论文交付。',
-    recommended: '推荐',
-    addonLabel: '附加服务 (Turnitin 官方报告)',
-    total: '总计',
-    payButton: '支付',
-    securePayment: 'SSL 安全支付',
-    closePreview: '关闭预览',
-    samplePreview: '样例预览',
-    highFidelity: '高保真样例',
-    samplePlaceholder: '这是样例的占位符。在生产环境中，这将显示高分辨率 PDF 或交互式文档查看器以展示输出质量。',
-    faq1Title: '问：EssayPass 的论文会被检测出来吗？',
-    faq1Answer: '答：我们的引擎使用学术逻辑逐行写作，不同于标准 LLM。此外，您可以添加官方 Turnitin 报告作为证明。',
-    faq2Title: '问：生成的草稿真的能用吗？',
-    faq2Answer: '答：是的。您将获得真实的引用（与正文匹配）、清晰的大纲和经过验证的参考文献列表。这是可直接提交的成品。',
-    trustedBy: '已获信赖',
-    students: '500万+ 学生',
-    gallery: {
-      paper: { label: '论文样例', title: '可提交的论文' },
-      summary: { label: '摘要样例', title: '一页摘要' },
-      faq: { label: 'FAQ样例', title: '主题常见问题' },
-      strategy: { label: '逻辑样例', title: '写作策略' },
-      refs: { label: '文献样例', title: '参考文献全文' }
-    },
-    billing: {
-      paper: { text: '可提交的论文', format: 'DOCX/PDF' },
-      summary: { text: '一页摘要', format: 'PDF' },
-      faq: { text: '主题常见问题', format: 'PDF' },
-      strategy: { text: '写作策略', format: 'PDF' },
-      refs: { text: '参考文献全文', format: 'ZIP/PDF' },
-      agent: { text: 'AI 代理上下文', format: '聊天记录' }
-    },
-    previewTitles: {
-      paper: '最终论文样例',
-      summary: '执行摘要样例',
-      faq: '主题 FAQ 与分析样例',
-      strategy: '逻辑与策略图样例',
-      refs: '已验证参考文献样例',
-      all: '交付物概览样例'
-    }
-  }
-};
-
 // Preview Modal Component
 const PreviewModal = ({
   activeItem,
@@ -125,7 +23,7 @@ const PreviewModal = ({
 }) => {
   if (!activeItem) return null;
 
-  const t = ORDER_TEXT[lang];
+  const t = UI_TEXT[lang].order;
   const titleMap = t.previewTitles as Record<string, string>;
 
   return (
@@ -184,7 +82,7 @@ const OrderConfirmation: React.FC<OrderConfirmationProps> = ({ formData, onBack,
     return () => clearTimeout(timer);
   }, []);
 
-  const t = ORDER_TEXT[lang];
+  const t = UI_TEXT[lang].order;
 
   // Pricing Logic
   const BASE_PRICE = 9.99;

@@ -26,10 +26,10 @@ export default function Header({ lang, onLangChange, viewMode = 'web', onViewMod
   const currentLang = languages.find(l => l.code === lang) || languages[0];
 
   const navItems = [
-    { href: '/ai-essay-writer', label: lang === 'zh' ? 'AI论文写作' : 'AI Essay Writer' },
-    { href: '/ai-detector', label: lang === 'zh' ? 'AI检测' : 'AI Detector' },
-    { href: '/blog', label: lang === 'zh' ? '博客' : 'Blog' },
-    { href: '/history', label: lang === 'zh' ? '历史记录' : 'History' },
+    { href: '/ai-essay-writer', label: t.nav.essayWriter },
+    { href: '/ai-detector', label: t.nav.detector },
+    { href: '/blog', label: t.nav.blog },
+    { href: '/history', label: t.nav.history },
   ];
 
   return (
