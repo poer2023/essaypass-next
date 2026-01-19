@@ -1,26 +1,208 @@
 @import "tailwindcss";
 
+/* Custom CSS Variables */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary: #2563EB;
+  --primary-dark: #1D4ED8;
+  --accent-orange: #F97316;
+  --accent-orange-hover: #EA580C;
+  --success: #22C55E;
+  --bg-page: #F8FAFC;
+  --surface: #FFFFFF;
+  --border: #E2E8F0;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Base Styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Custom Animations */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes scan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.animate-scan {
+  animation: scan 1.5s ease-in-out infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1s ease-out;
+}
+
+/* Custom Scrollbar Hide */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Focus ring override */
+.focus-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  border-color: var(--primary);
+}
+
+/* Filled state */
+.is-filled {
+  background-color: rgba(34, 197, 94, 0.05);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Field highlight animation */
+.field-highlight {
+  box-shadow: 0 0 0 2px var(--primary), 0 0 0 4px rgba(37, 99, 235, 0.15);
+  transform: scale(1.01);
+  background-color: rgba(37, 99, 235, 0.03);
+}
+
+/* No scrollbar utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Gradient flow animation */
+@keyframes gradient-x {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% 200%;
+  animation: gradient-x 3s ease infinite;
+}
+
+/* Shimmer effect for magic button */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* 点击引导动效 - 脉冲 + 淡出 */
+@keyframes pulse-hint {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-hint {
+  animation: pulse-hint 1s ease-in-out infinite;
+}
+
+/* 小手戳动动画 - 模拟点击提示 (上下弹跳+缩放) */
+@keyframes tap-hint {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px) scale(0.9);
+    opacity: 0.8;
+  }
+}
+
+/* 点击涟漪效果 */
+@keyframes tap-ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+}
+
+.animate-tap-hint {
+  animation: tap-hint 0.8s ease-in-out infinite;
+}
+
+.animate-tap-ripple {
+  animation: tap-ripple 0.8s ease-in-out infinite;
 }

@@ -1,0 +1,65 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import Header from "@/components/Header";
+import OrderConfirmation from "@/components/OrderConfirmation";
+import { Lang, EssayFormData } from "@/lib/types";
+
+// Demo 默认数据
+const DEFAULT_FORM_DATA: EssayFormData = {
+  type: 'Research Paper',
+  academicLevel: 'Undergraduate',
+  topic: 'The Impact of Artificial Intelligence on Modern Education',
+  instructions: '### Task Objectives\n- Discuss the pros and cons of AI tools like ChatGPT in classrooms\n- Include ethical considerations\n\n### Constraints\n- Use academic tone\n- Cite all sources',
+  referenceFiles: [],
+  outlineType: 'ai',
+  wordCount: '2000-2500 words',
+  language: 'English',
+  citationStyle: 'APA 7th',
+  includeChartsTables: false,
+  includeFormulas: false,
+};
+
+export default function TaskPage() {
+  const [lang, setLang] = useState<Lang>('en');
+  const [formData, setFormData] = useState<EssayFormData>(DEFAULT_FORM_DATA);
+  const router = useRouter();
+
+  useEffect(() => {
+    // 尝试从 sessionStorage 读取表单数据
+    const savedData = sessionStorage.getItem('essayFormData');
+    if (savedData) {
+      try {
+        setFormData(JSON.parse(savedData));
+      } catch {
+        // 使用默认数据
+      }
+    }
+  }, []);
+
+  const handleBack = () => {
+    router.push('/ai-essay-writer');
+  };
+
+  const handlePay = () => {
+    // TODO: Integrate payment
+    alert(lang === 'zh' ? '支付功能即将上线！' : 'Payment integration coming soon!');
+  };
+
+  return (
+    <>
+      <Header lang={lang} onLangChange={setLang} />
+      <main>
+        <div className="bg-gradient-to-b from-slate-50/50 to-slate-100/50 min-h-[calc(100vh-64px)] py-8 px-4">
+          <OrderConfirmation
+            formData={formData}
+            onBack={handleBack}
+            onPay={handlePay}
+            lang={lang}
+          />
+        </div>
+      </main>
+    </>
+  );
+}
