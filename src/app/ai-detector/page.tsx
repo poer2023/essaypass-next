@@ -234,10 +234,10 @@ export default function AIDetectorPage() {
                 </div>
 
                 {/* Right: CTA with shimmer effect */}
-                <button className="relative w-full sm:w-auto px-6 py-2.5 sm:py-3 bg-orange-500 text-white text-sm rounded-lg font-semibold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/40 hover:shadow-orange-500/60 hover:scale-105 whitespace-nowrap overflow-hidden flex-shrink-0">
+                <a href="/ai-essay-writer" className="relative w-full sm:w-auto px-6 py-2.5 sm:py-3 bg-orange-500 text-white text-sm rounded-lg font-semibold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/40 hover:shadow-orange-500/60 hover:scale-105 whitespace-nowrap overflow-hidden flex-shrink-0 text-center">
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></span>
                   {t.whyEssayPass.cta}
-                </button>
+                </a>
               </div>
 
               {/* Divider */}
