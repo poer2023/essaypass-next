@@ -61,26 +61,31 @@ export default function AIDetectorPage() {
       </div>
 
       {/* Hero Section */}
-      <section className="pt-8 pb-4 text-center relative z-10">
-        <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3">
+      <section className="pt-6 sm:pt-8 pb-4 text-center relative z-10 px-4">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold text-slate-900 mb-2 sm:mb-3">
           {t.heroTitle} <span className="text-blue-600">{t.heroTitleHighlight}</span>
         </h1>
-        <p className="text-slate-500 max-w-2xl mx-auto px-4 text-base">
+        <p className="text-slate-500 max-w-2xl mx-auto text-sm sm:text-base">
           {t.heroSubtitle}
         </p>
 
-        {/* Flow Indicator Badges */}
-        <div className="flex items-center justify-center gap-3 mt-4">
+        {/* Flow Indicator Badges - Stack on mobile */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-1.5 sm:gap-3 mt-4">
           {/* Step 1: Identify Risks - Clean white with subtle shadow */}
-          <div className="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full text-slate-600 text-sm font-medium shadow-sm">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white border border-slate-200 rounded-full text-slate-600 text-xs sm:text-sm font-medium shadow-sm">
+            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             {t.identifyRisks}
           </div>
 
-          {/* Arrow connector - Gradient line with arrow */}
-          <div className="flex items-center gap-1">
+          {/* Arrow connector - Different for mobile vs desktop */}
+          {/* Mobile: Simple down arrow */}
+          <svg className="w-4 h-4 text-emerald-500 sm:hidden" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M7 10l5 5 5-5H7z" />
+          </svg>
+          {/* Desktop: Gradient line with arrow */}
+          <div className="hidden sm:flex items-center gap-1">
             <div className="w-8 h-0.5 bg-gradient-to-r from-slate-300 to-emerald-400 rounded-full" />
             <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 24 24">
               <path d="M10 17l5-5-5-5v10z" />
@@ -88,8 +93,8 @@ export default function AIDetectorPage() {
           </div>
 
           {/* Step 2: Professional Solution - Gradient with glow */}
-          <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full text-white text-sm font-medium shadow-lg shadow-emerald-500/30">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full text-white text-xs sm:text-sm font-medium shadow-lg shadow-emerald-500/30">
+            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             {t.professionalSolution}
@@ -207,39 +212,39 @@ export default function AIDetectorPage() {
 
           {/* Why EssayPass - Two-Row Banner */}
           <div className="w-full max-w-4xl mx-auto">
-            <div className="bg-gradient-to-r from-blue-50 via-white to-white rounded-2xl border border-blue-100 p-6 shadow-sm">
-              {/* Row 1: Title + CTA */}
-              <div className="flex items-start justify-between gap-6 mb-5">
+            <div className="bg-gradient-to-r from-blue-50 via-white to-white rounded-2xl border border-blue-100 p-4 sm:p-6 shadow-sm">
+              {/* Row 1: Title + CTA - Stack on mobile */}
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6 mb-4 sm:mb-5">
                 {/* Left: Title + Comparison + Social Proof */}
-                <div>
-                  <h2 className="text-lg font-bold text-slate-900 mb-1.5">
+                <div className="text-center sm:text-left">
+                  <h2 className="text-base sm:text-lg font-bold text-slate-900 mb-1 sm:mb-1.5">
                     {t.whyEssayPass.heading}
                   </h2>
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2 text-sm">
+                  <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm">
                       <span className="text-red-500 font-medium">{t.whyEssayPass.comparison.generalRisk}</span>
                       <span className="text-slate-300">→</span>
                       <span className="text-emerald-600 font-medium">{t.whyEssayPass.comparison.essayPassSafe}</span>
                     </div>
                     {/* Social Proof */}
-                    <span className="text-xs text-slate-400 border-l border-slate-200 pl-3">
+                    <span className="text-xs text-slate-400 sm:border-l sm:border-slate-200 sm:pl-3">
                       ⭐ Trusted by 10,000+ students
                     </span>
                   </div>
                 </div>
 
                 {/* Right: CTA with shimmer effect */}
-                <button className="relative px-6 py-3 bg-orange-500 text-white text-sm rounded-lg font-semibold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/40 hover:shadow-orange-500/60 hover:scale-105 whitespace-nowrap overflow-hidden flex-shrink-0">
+                <button className="relative w-full sm:w-auto px-6 py-2.5 sm:py-3 bg-orange-500 text-white text-sm rounded-lg font-semibold hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/40 hover:shadow-orange-500/60 hover:scale-105 whitespace-nowrap overflow-hidden flex-shrink-0">
                   <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer"></span>
                   {t.whyEssayPass.cta}
                 </button>
               </div>
 
               {/* Divider */}
-              <div className="border-t border-slate-100 mb-5"></div>
+              <div className="border-t border-slate-100 mb-4 sm:mb-5"></div>
 
               {/* Row 2: 3 Features - Card style */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                 {t.whyEssayPass.features.map((feature, index) => (
                   <div key={index} className={`flex items-start gap-3 p-3 bg-white rounded-xl border border-slate-100 hover:shadow-sm transition-all ${
                     index === 0 ? 'hover:border-emerald-200' :
