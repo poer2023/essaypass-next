@@ -146,13 +146,26 @@ body {
   0% {
     transform: translateX(-100%);
   }
+  50% {
+    transform: translateX(200%);
+  }
   100% {
-    transform: translateX(100%);
+    transform: translateX(200%);
   }
 }
 
 .animate-shimmer {
-  animation: shimmer 2s ease-in-out infinite;
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+/* Float animation - gentle up/down movement for upload icon */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
 /* 点击引导动效 - 脉冲 + 淡出 */

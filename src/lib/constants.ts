@@ -83,6 +83,58 @@ export const UI_TEXT = {
       blog: "Blog",
       history: "History"
     },
+    // AI Detector Page
+    detector: {
+      heroTitle: "Shield Your",
+      heroTitleHighlight: "Academic Integrity",
+      heroSubtitle: "Detect hidden risks in your manuscript and resolve them with professional-grade academic intelligence.",
+      identifyRisks: "Identify Risks",
+      professionalSolution: "Professional Solution",
+      uploadTitle: "Upload your document",
+      uploadDragDrop: "Drag and drop your file here, or click to browse",
+      uploadSupported: "Supports .docx and .pdf files",
+      detectButton: "Detect",
+      detecting: "Detecting...",
+      importantNotes: "Important Notes",
+      notes: [
+        "similarity.rules.notStored",
+        "English text only. Images not analyzed.",
+        "Submit main text only, suggested 820-29,000 English words.",
+        "Remove bibliographies if you need pure body-text check.",
+        "Supports .docx and .pdf, minor variance possible."
+      ],
+      whyEssayPass: {
+        badge: "RECOMMENDED",
+        title: "ACADEMIC AI UPGRADE",
+        heading: "Why EssayPass Writer?",
+        comparison: {
+          generalAI: "GENERAL AI",
+          generalRisk: "HIGH RISK",
+          essayPass: "ESSAYPASS",
+          essayPassSafe: "SAFE & SOLID"
+        },
+        features: [
+          {
+            icon: "check",
+            title: "Low AI Rate",
+            badge: "(Bypass Detector)",
+            description: "Engineered to mimic human-like academic logic, making it invisible to Turnitin."
+          },
+          {
+            icon: "book",
+            title: "Verified Sources Only",
+            description: "Access 500M+ real research papers. No fake citations or hallucinations."
+          },
+          {
+            icon: "format",
+            title: "Standard Academic Format",
+            description: "Strict adherence to APA, MLA, and Harvard guidelines for top grades."
+          }
+        ],
+        cta: "Try EssayPass Writer Now",
+        notesTitle: "注意事项"
+      }
+    },
     // Auto Fill Section
     autoFill: {
       title: "AI Smart Analysis",
@@ -236,6 +288,58 @@ export const UI_TEXT = {
       detector: "AI 检测器",
       blog: "博客",
       history: "历史记录"
+    },
+    // AI Detector Page
+    detector: {
+      heroTitle: "守护您的",
+      heroTitleHighlight: "学术诚信",
+      heroSubtitle: "检测文稿中的隐藏风险，并通过专业级学术智能解决问题。",
+      identifyRisks: "识别风险",
+      professionalSolution: "专业解决方案",
+      uploadTitle: "上传您的文档",
+      uploadDragDrop: "拖放文件到此处，或点击浏览",
+      uploadSupported: "支持 .docx 和 .pdf 文件",
+      detectButton: "检测",
+      detecting: "检测中...",
+      importantNotes: "重要提示",
+      notes: [
+        "相似度规则：不存储",
+        "仅支持英文文本。不分析图片。",
+        "仅提交正文，建议 820-29,000 英文单词。",
+        "如需纯正文检测，请移除参考文献。",
+        "支持 .docx 和 .pdf，可能存在轻微差异。"
+      ],
+      whyEssayPass: {
+        badge: "推荐",
+        title: "学术AI升级",
+        heading: "为什么选择 EssayPass Writer?",
+        comparison: {
+          generalAI: "通用AI",
+          generalRisk: "高风险",
+          essayPass: "ESSAYPASS",
+          essayPassSafe: "安全可靠"
+        },
+        features: [
+          {
+            icon: "check",
+            title: "低AI检测率",
+            badge: "(绕过检测)",
+            description: "模拟人类学术逻辑，让 Turnitin 无法检测。"
+          },
+          {
+            icon: "book",
+            title: "仅使用验证来源",
+            description: "访问 5 亿+ 真实研究论文。无虚假引用或幻觉。"
+          },
+          {
+            icon: "format",
+            title: "标准学术格式",
+            description: "严格遵循 APA、MLA 和 Harvard 指南，助您获得高分。"
+          }
+        ],
+        cta: "立即试用 EssayPass Writer",
+        notesTitle: "注意事项"
+      }
     },
     // Auto Fill Section
     autoFill: {
