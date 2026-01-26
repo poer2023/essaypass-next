@@ -358,7 +358,7 @@ export default function EssayForm({ lang, onSubmit, initialTopic = '' }: EssayFo
                                     onChange={(e) => handleChange('instructions', e.target.value.slice(0, 10000))}
                                     maxLength={10000}
                                     className={`w-full p-4 pb-8 min-h-[120px] text-slate-700 text-sm leading-relaxed resize-y focus:ring-0 border-none outline-none placeholder:text-slate-400 ${filledFields.has('instructions') ? 'bg-emerald-50/20' : 'bg-transparent'}`}
-                                    placeholder={lang === 'zh' ? '在此粘贴具体说明、题目详情、评分标准...' : 'Paste specific instructions, prompt details, grading criteria here...'}
+                                    placeholder={lang === 'zh' ? '仅填补充要求（选填）' : 'Only add extra requirements (optional)'}
                                 />
                                 <div className="absolute bottom-2 left-4 pointer-events-none">
                                     <span className={`text-[10px] font-medium transition-colors ${formData.instructions.length >= 10000 ? 'text-orange-500' : 'text-slate-300'}`}>
