@@ -139,7 +139,7 @@ export const UI_TEXT = {
     autoFill: {
       title: "AI Smart Analysis",
       subtitle: "Paste or upload assignment requirements to auto-fill the form.",
-      placeholder: "Paste prompt/rubric/syllabus to auto-fill the form...",
+      placeholder: "Paste the teacher’s instructions, auto-fill the form.",
       uploadTip: "Upload Requirements",
       uploadReq: "Assignment requirements",
       uploadTooltip: "Upload your assignment brief, rubric, or syllabus. We'll auto-fill the form for you. (1 file max)",
@@ -345,7 +345,7 @@ export const UI_TEXT = {
     autoFill: {
       title: "AI 智能分析",
       subtitle: "粘贴或上传作业要求以自动填充表单。",
-      placeholder: "在此粘贴题目/评分标准/大纲以自动填充...",
+      placeholder: "粘贴老师要求，自动填表。",
       uploadTip: "上传要求",
       uploadReq: "作业要求",
       uploadTooltip: "上传老师发布的作业要求、评分标准或教学大纲，AI 将自动填充表单。(限1份)",

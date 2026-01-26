@@ -67,7 +67,8 @@ export default function EssayForm({ lang, onSubmit, initialTopic = '' }: EssayFo
     };
 
     const handleAutoFillInput = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setAutoFillPrompt(e.target.value);
+        const val = e.target.value.slice(0, 1000);
+        setAutoFillPrompt(val);
         if (textareaRef.current) {
             textareaRef.current.style.height = 'auto';
             textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
@@ -187,7 +188,14 @@ export default function EssayForm({ lang, onSubmit, initialTopic = '' }: EssayFo
                                             value={autoFillPrompt}
                                             onChange={handleAutoFillInput}
                                             disabled={isAnalyzing}
+                                            maxLength={1000}
                                         />
+                                        {/* Character Count */}
+                                        <div className="absolute bottom-1 left-4 z-10 pointer-events-none">
+                                            <span className={`text-[10px] font-medium transition-colors ${autoFillPrompt.length >= 1000 ? 'text-orange-500' : 'text-slate-300'}`}>
+                                                {autoFillPrompt.length}/1000
+                                            </span>
+                                        </div>
                                         <div className="flex items-center justify-end gap-2 px-3 pb-3 sm:pb-2.5 sm:pr-3 sm:pl-0">
                                             {/* Upload Button */}
                                             <div className="relative group/upload">
@@ -211,11 +219,10 @@ export default function EssayForm({ lang, onSubmit, initialTopic = '' }: EssayFo
                                                 type="button"
                                                 onClick={handleAnalyze}
                                                 disabled={isAnalyzing || !autoFillPrompt.trim()}
-                                                className={`relative flex items-center gap-1.5 px-4 py-2 rounded-lg shadow transition-all overflow-hidden ${
-                                                    (isAnalyzing || !autoFillPrompt.trim())
-                                                        ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
-                                                        : 'bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-[length:200%_100%] animate-gradient-x text-white hover:shadow-lg hover:shadow-purple-500/25 hover:scale-105'
-                                                }`}
+                                                className={`relative flex items-center gap-1.5 px-4 py-2 rounded-lg shadow transition-all overflow-hidden ${(isAnalyzing || !autoFillPrompt.trim())
+                                                    ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                                                    : 'bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-[length:200%_100%] animate-gradient-x text-white hover:shadow-lg hover:shadow-purple-500/25 hover:scale-105'
+                                                    }`}
                                             >
                                                 {/* Magic glow effect */}
                                                 {!isAnalyzing && autoFillPrompt.trim() && (
@@ -271,8 +278,8 @@ export default function EssayForm({ lang, onSubmit, initialTopic = '' }: EssayFo
                     <form
                         onSubmit={handleSubmit}
                         className={`bg-white overflow-hidden p-6 sm:p-8 space-y-5 transition-all duration-500 ${isCollapsed
-                                ? 'rounded-b-2xl rounded-t-none shadow-xl shadow-slate-200/60 border border-slate-200 border-t-0'
-                                : 'rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-200'
+                            ? 'rounded-b-2xl rounded-t-none shadow-xl shadow-slate-200/60 border border-slate-200 border-t-0'
+                            : 'rounded-2xl shadow-xl shadow-slate-200/60 border border-slate-200'
                             }`}
                     >
                         {/* Type & Academic Level */}
@@ -344,14 +351,20 @@ export default function EssayForm({ lang, onSubmit, initialTopic = '' }: EssayFo
                                     </div>
                                 </div>
                             </div>
-                            <div className="p-0">
+                            <div className="p-0 relative">
                                 <textarea
                                     rows={4}
                                     value={formData.instructions}
-                                    onChange={(e) => handleChange('instructions', e.target.value)}
-                                    className={`w-full p-4 min-h-[120px] text-slate-700 text-sm leading-relaxed resize-y focus:ring-0 border-none outline-none placeholder:text-slate-400 ${filledFields.has('instructions') ? 'bg-emerald-50/20' : 'bg-transparent'}`}
+                                    onChange={(e) => handleChange('instructions', e.target.value.slice(0, 10000))}
+                                    maxLength={10000}
+                                    className={`w-full p-4 pb-8 min-h-[120px] text-slate-700 text-sm leading-relaxed resize-y focus:ring-0 border-none outline-none placeholder:text-slate-400 ${filledFields.has('instructions') ? 'bg-emerald-50/20' : 'bg-transparent'}`}
                                     placeholder={lang === 'zh' ? '在此粘贴具体说明、题目详情、评分标准...' : 'Paste specific instructions, prompt details, grading criteria here...'}
                                 />
+                                <div className="absolute bottom-2 left-4 pointer-events-none">
+                                    <span className={`text-[10px] font-medium transition-colors ${formData.instructions.length >= 10000 ? 'text-orange-500' : 'text-slate-300'}`}>
+                                        {formData.instructions.length}/10000
+                                    </span>
+                                </div>
                             </div>
                         </div>
 

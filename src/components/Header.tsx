@@ -11,9 +11,10 @@ interface HeaderProps {
   onLangChange: (lang: Lang) => void;
   viewMode?: ViewMode;
   onViewModeChange?: (mode: ViewMode) => void;
+  className?: string;
 }
 
-export default function Header({ lang, onLangChange, viewMode = 'web', onViewModeChange }: HeaderProps) {
+export default function Header({ lang, onLangChange, viewMode = 'web', onViewModeChange, className = '' }: HeaderProps) {
   const [showLangMenu, setShowLangMenu] = useState(false);
   const t = UI_TEXT[lang];
   const pathname = usePathname();
@@ -33,7 +34,7 @@ export default function Header({ lang, onLangChange, viewMode = 'web', onViewMod
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
+    <header className={`sticky top-0 z-50 bg-blue-50 backdrop-blur-md border-b border-blue-100 shadow-md ${className}`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5">
@@ -51,11 +52,10 @@ export default function Header({ lang, onLangChange, viewMode = 'web', onViewMod
             <Link
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium transition-colors ${
-                pathname?.startsWith(item.href)
-                  ? 'text-blue-600'
-                  : 'text-slate-600 hover:text-blue-600'
-              }`}
+              className={`text-sm font-medium transition-colors ${pathname?.startsWith(item.href)
+                ? 'text-blue-600'
+                : 'text-slate-600 hover:text-blue-600'
+                }`}
             >
               {item.label}
             </Link>
@@ -89,9 +89,8 @@ export default function Header({ lang, onLangChange, viewMode = 'web', onViewMod
                         onLangChange(language.code);
                         setShowLangMenu(false);
                       }}
-                      className={`w-full px-3 py-2 text-left text-sm flex items-center gap-2 hover:bg-slate-50 transition-colors ${
-                        lang === language.code ? 'text-blue-600 bg-blue-50' : 'text-slate-600'
-                      }`}
+                      className={`w-full px-3 py-2 text-left text-sm flex items-center gap-2 hover:bg-slate-50 transition-colors ${lang === language.code ? 'text-blue-600 bg-blue-50' : 'text-slate-600'
+                        }`}
                     >
                       <span className="text-base">{language.flag}</span>
                       {language.label}
@@ -127,11 +126,10 @@ export default function Header({ lang, onLangChange, viewMode = 'web', onViewMod
             <div className="hidden md:flex items-center bg-slate-100 rounded-lg p-0.5">
               <button
                 onClick={() => onViewModeChange('web')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
-                  viewMode === 'web'
-                    ? 'bg-white text-blue-600 shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
-                }`}
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${viewMode === 'web'
+                  ? 'bg-white text-blue-600 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700'
+                  }`}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -140,11 +138,10 @@ export default function Header({ lang, onLangChange, viewMode = 'web', onViewMod
               </button>
               <button
                 onClick={() => onViewModeChange('mobile')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
-                  viewMode === 'mobile'
-                    ? 'bg-white text-blue-600 shadow-sm'
-                    : 'text-slate-500 hover:text-slate-700'
-                }`}
+                className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${viewMode === 'mobile'
+                  ? 'bg-white text-blue-600 shadow-sm'
+                  : 'text-slate-500 hover:text-slate-700'
+                  }`}
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
